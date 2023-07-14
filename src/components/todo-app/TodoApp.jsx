@@ -2,6 +2,7 @@ import React, { Component  } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import withNavigation from './WithNavigation';
 import withParams from './WithParams';
+import AuthenticationService from './AuthenticationService.js';
 
 
 class TodoApp extends Component {
@@ -49,7 +50,8 @@ class LoginComponent extends Component {
     }
 
     loginClicked() {
-        if(this.state.username==='in28minutes' && this.state.password==='dummy'){           
+        if(this.state.username==='in28minutes' && this.state.password==='dummy'){   
+            AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password)
             this.props.navigate(`/welcome/${this.state.username}`)
         }
         else {
